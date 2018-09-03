@@ -1,3 +1,17 @@
+%% Ploar Histogram
+% This file will plot the plor hiostogram for and experiment based on a stimulus
+% variable.
+%
+% The inputs should be as follows:
+%
+% * feature: This should contain the whole possible values of the stimulus variable
+% that is mined the experiment.
+% * feature_name : This argument, is stand for the name of that stimulus variable
+% in trials data.
+% * trials: Clear, the trials exist in the experiment.
+% * confined_time: The time we want to look for spikes after onset, in seconds.
+%
+
 function pie_plot(feature, feature_name, trials, confined_time)
     time_coenfficient = 1000;
     num_of_spikes = [];
