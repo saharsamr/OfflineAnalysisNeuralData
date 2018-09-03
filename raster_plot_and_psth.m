@@ -1,3 +1,23 @@
+%% Raster Plot and PSTH
+% This Function will plot the raster plot and the compute the psth corresponding
+% to that for all values possible for the stimulus varible that is the subject of
+% the experimtn.
+%
+% The inputs should be as follows:
+%
+% * feature: This should contain the whole possible values of the stimulus variable
+% that is mined in the experiment.
+% * trials: Clear, the trials exist in the experiment.
+% * feature_name : This argument, is stand for the name of that stimulus variable
+% in trials data.
+% * x_low_lim: The low limit of the x axis.
+% * x_high_lim: The high limit of the x axis.
+% * x_axis_partitions: The numbers we want to display on the x axis.
+% * bin_size_ms: The bin size for psth computing in mili seconds.
+% * x_delta_ms: The step that is using for computing the proper bin for psth in
+% mili secconds.
+%
+
 function raster_plot_and_psth ( ...
             features, ...
             trials, ...
