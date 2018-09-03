@@ -1,3 +1,18 @@
+%% Plot Single LFP Signal
+% This function will calculate and plot the LFP signal, which can be obtained
+% from the continous data in the .NSx files recieved from blackrock system. The
+% output LFP is the average among all trials.
+%
+% The inputs should be as follows:
+%
+% * continuous_data: The contineous data reletive to the experiment's trials.
+% * continuous_data: The timestamps corresponding to the previous argument.
+% * trials: Clear, the trials exist in the experiment.
+% * x_low_lim: The low limit of the x axis.
+% * x_high_lim: The high limit of the x axis.
+% * x_axis_partitions: The numbers we want to display on the x axis.
+%
+
 function plot_lfp_sparse_noise ( ...
             continueous_data, ...
             continueous_data_time, ...
