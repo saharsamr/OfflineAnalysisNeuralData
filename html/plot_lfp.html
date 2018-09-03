@@ -80,16 +80,17 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
     continuous_data=double(continuous_data);
     min_len = 1000000;
+    trials_ = struct(<span class="string">'continueous_data'</span>, {}, <span class="string">'filtered_data'</span>, {});
     <span class="keyword">for</span> i = 1:numel(Trials)
         time_on_set = Trials(i).Time_Onset_PHDI+30;
-        Trials(i).continuous_data.info = continuous_data(continuous_data_time &gt; time_on_set + x_low_lim &amp; continuous_data_time &lt; time_on_set + x_high_lim);
-        Trials(i).continuous_data.time = continuous_data_time(continuous_data_time &gt; time_on_set + x_low_lim &amp; continuous_data_time &lt; time_on_set + x_high_lim) - time_on_set;
-        Trials(i).filtered_data = lowpass(Trials(i).continuous_data.info, 250, 30000);
-        min_len = min(min_len, numel(Trials(i).filtered_data));
+        trials_(i).continuous_data.info = continuous_data(continuous_data_time &gt; time_on_set + x_low_lim &amp; continuous_data_time &lt; time_on_set + x_high_lim);
+        trials_(i).continuous_data.time = continuous_data_time(continuous_data_time &gt; time_on_set + x_low_lim &amp; continuous_data_time &lt; time_on_set + x_high_lim) - time_on_set;
+        trials_(i).filtered_data = lowpass(trials_(i).continuous_data.info, 250, 30000);
+        min_len = min(min_len, numel(trials_(i).filtered_data));
     <span class="keyword">end</span>
 
     <span class="keyword">for</span> i = 1:numel(features)
-        selected_trials = Trials([Trials.(feature_name)] == i);
+        selected_trials = trials_([Trials.(feature_name)] == i);
         data = {selected_trials([1:end]).filtered_data};
         lfp = zeros(1, 29999);
         <span class="keyword">for</span> t = 1:numel(selected_trials)
@@ -140,16 +141,17 @@ function plot_lfp ( ...
 
     continuous_data=double(continuous_data);
     min_len = 1000000;
+    trials_ = struct('continueous_data', {}, 'filtered_data', {});
     for i = 1:numel(Trials)
         time_on_set = Trials(i).Time_Onset_PHDI+30;
-        Trials(i).continuous_data.info = continuous_data(continuous_data_time > time_on_set + x_low_lim & continuous_data_time < time_on_set + x_high_lim);
-        Trials(i).continuous_data.time = continuous_data_time(continuous_data_time > time_on_set + x_low_lim & continuous_data_time < time_on_set + x_high_lim) - time_on_set;
-        Trials(i).filtered_data = lowpass(Trials(i).continuous_data.info, 250, 30000);
-        min_len = min(min_len, numel(Trials(i).filtered_data));
+        trials_(i).continuous_data.info = continuous_data(continuous_data_time > time_on_set + x_low_lim & continuous_data_time < time_on_set + x_high_lim);
+        trials_(i).continuous_data.time = continuous_data_time(continuous_data_time > time_on_set + x_low_lim & continuous_data_time < time_on_set + x_high_lim) - time_on_set;
+        trials_(i).filtered_data = lowpass(trials_(i).continuous_data.info, 250, 30000);
+        min_len = min(min_len, numel(trials_(i).filtered_data));
     end
 
     for i = 1:numel(features)
-        selected_trials = Trials([Trials.(feature_name)] == i);
+        selected_trials = trials_([Trials.(feature_name)] == i);
         data = {selected_trials([1:end]).filtered_data};
         lfp = zeros(1, 29999);
         for t = 1:numel(selected_trials)
