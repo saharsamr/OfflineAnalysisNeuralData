@@ -5,7 +5,7 @@
 % The inputs should be as follows:
 %
 % * feature: This should contain the whole possible values of the stimulus variable
-% that is mined the experiment.
+% that is mined in the experiment.
 % * feature_name : This argument, is stand for the name of that stimulus variable
 % in trials data.
 % * trials: Clear, the trials exist in the experiment.

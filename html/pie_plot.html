@@ -66,7 +66,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1>Ploar Histogram</h1><p>This file will plot the plor hiostogram for and experiment based on a stimulus variable.</p><p>The inputs should be as follows:</p><div><ul><li>feature: This should contain the whole possible values of the stimulus variable that is mined the experiment.</li><li>feature_name : This argument, is stand for the name of that stimulus variable in trials data.</li><li>trials: Clear, the trials exist in the experiment.</li><li>confined_time: The time we want to look for spikes after onset, in seconds.</li></ul></div><pre class="codeinput"><span class="keyword">function</span> pie_plot(feature, feature_name, trials, confined_time)
+  </style></head><body><div class="content"><h1>Ploar Histogram</h1><p>This file will plot the plor hiostogram for and experiment based on a stimulus variable.</p><p>The inputs should be as follows:</p><div><ul><li>feature: This should contain the whole possible values of the stimulus variable that is mined in the experiment.</li><li>feature_name : This argument, is stand for the name of that stimulus variable in trials data.</li><li>trials: Clear, the trials exist in the experiment.</li><li>confined_time: The time we want to look for spikes after onset, in seconds.</li></ul></div><pre class="codeinput"><span class="keyword">function</span> pie_plot(feature, feature_name, trials, confined_time)
     time_coenfficient = 1000;
     num_of_spikes = [];
     <span class="keyword">for</span> i = 1:numel(feature)
@@ -106,7 +106,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 % The inputs should be as follows:
 %
 % * feature: This should contain the whole possible values of the stimulus variable
-% that is mined the experiment.
+% that is mined in the experiment.
 % * feature_name : This argument, is stand for the name of that stimulus variable
 % in trials data.
 % * trials: Clear, the trials exist in the experiment.
